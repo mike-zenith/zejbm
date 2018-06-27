@@ -57,5 +57,5 @@ Q: Nem éri el / nem tudja írni / nem tud paramétert változtatni az xy queue(
 A: `docker-compose kill rabbitmq && docker-compose up rabbitmq -d`  
 
 Q: Miért nem fejezted be?  
-A: Borzasztó sok energiát öltem bele és szarul is érzem magam miatta   
+A: Borzasztó sok energiát öltem bele az utóbbi pár napban, sajnos magánéleti problémák miatt nem tudtam befejezni időben
  
