@@ -1,0 +1,34 @@
+# behat.yml
+default:
+  autoload:
+    "zejbm\\features\\": "%paths.base%/features/"
+
+  extensions:
+    Behat\MinkExtension:
+      base_url: "http://localhost:8000"
+      sessions:
+        default:
+          goutte:
+            guzzle_parameters:
+                verify: false
+
+  suites:
+    producer:
+      paths: [ "%paths.base%/features/producer" ]
+
+      contexts:
+        - zejbm\features\bootstrap\ProducerContext
+        - zejbm\features\bootstrap\QueueHandlerContext:
+            - producer/src/Infrastructure/Delivery/container.php
+        - Behat\MinkExtension\Context\MinkContext
+
+    consumer:
+      paths: [ "%paths.base%/features/consumer" ]
+
+      contexts:
+        - zejbm\features\bootstrap\ConsumerContext:
+            - producer/src/Infrastructure/Delivery/container.php
+        - zejbm\features\bootstrap\QueueHandlerContext:
+            - producer/src/Infrastructure/Delivery/container.php
+
+

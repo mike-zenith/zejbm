@@ -1,0 +1,41 @@
+{
+    "name": "mike-zenith/zejbm",
+    "description": "ZEJBM test",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^7.2",
+        "behat/behat": "^3.4",
+        "behat/mink": "^1.7",
+        "behat/mink-goutte-driver": "^1.2",
+        "behat/mink-extension": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "zejbm\\producer\\": "producer/src",
+            "zejbm\\consumer\\": "consumer/src",
+            "zejbm\\shared\\": "shared/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "zejbm\\features\\": "features/",
+            "zejbm\\producer\\tests\\": "producer/tests/",
+            "zejbm\\consumer\\tests\\": "consumer/tests/",
+            "zejbm\\shared\\tests\\": "shared/tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mike Zenith",
+            "email": "imre.juhasz@onceapanda.com"
+        }
+    ],
+    "require": {
+        "php-amqplib/php-amqplib": "^2.7",
+        "ramsey/uuid": "^3.7",
+        "zendframework/zend-diactoros": "^1.7",
+        "relay/relay": "2.x@dev",
+        "symfony/dependency-injection": "^4.1",
+        "symfony/config": "^4.1"
+    }
+}

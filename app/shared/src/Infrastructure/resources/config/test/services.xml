@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="Infrastructure\Message\Transport\RabbitMQTransport" class="zejbm\shared\Infrastructure\Message\Transport\RabbitMQTransport">
+            <argument type="service" id="Infrastructure\Message\Transport\RabbitMQPipe" />
+        </service>
+
+        <service id="Infrastructure\Message\Transport\RabbitMQPipe" class="zejbm\shared\Infrastructure\Message\Transport\RabbitMQPipe">
+            <argument type="service" id="AMQPStreamConnection" />
+            <argument>%queue.queue%</argument>
+            <argument>%queue.exchange%</argument>
+        </service>
+
+        <service id="AMQPStreamConnection" class="PhpAmqpLib\Connection\AMQPStreamConnection">
+            <argument>%queue.host%</argument>
+            <argument>%queue.port%</argument>
+            <argument>%queue.user%</argument>
+            <argument>%queue.pass%</argument>
+        </service>
+
+    </services>
+
+</container>

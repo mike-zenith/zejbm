@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+
+  composer:
+    image: composer:1.6
+    volumes:
+      - ./app:/app
+    command:
+      - composer install --ignore-platform-reqs
+
+  app:
+    image: php:7-alpine3.7
+    volumes:
+      - ./app:/app
+    depends_on:
+      - composer
+      - rabbitmq
+    command:
+
+  rabbitmq:
+    image: rabbitmq:3.7-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=local
+      - RABBITMQ_DEFAULT_PASS=local

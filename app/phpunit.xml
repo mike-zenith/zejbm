@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit
+        bootstrap="./vendor/autoload.php"
+        timeoutForSmallTests="1"
+        timeoutForMediumTests="5"
+        timeoutForLargeTests="10"
+>
+    <testsuites>
+        <testsuite name="shared suite">
+            <directory>./shared/tests/</directory>
+        </testsuite>
+        <testsuite name="producer suite">
+            <directory>./producer/tests/</directory>
+        </testsuite>
+        <testsuite name="consumer suite">
+            <directory>./consumer/tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

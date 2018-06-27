@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="UI\Action\DisplayHomePage" class="zejbm\producer\UI\Action\DisplayHomePage">
+            <tag name="action" />
+        </service>
+
+        <service id="UI\Action\SendRandomMessageToQueue" class="zejbm\producer\UI\Action\SendRandomMessageToQueue">
+            <tag name="action" />
+
+            <argument type="service" id="Application\UseCase\Message\SendRandomMessageToQueue" />
+        </service>
+
+        <service id="Application\UseCase\Message\SendRandomMessageToQueue" class="zejbm\producer\Application\UseCase\Message\SendRandomMessageToQueue">
+            <argument type="service" id="Infrastructure\Message\Factory\RandomMessageFactory" />
+            <argument type="service" id="Infrastructure\Message\Transport\RabbitMQTransport" />
+        </service>
+
+        <service id="Infrastructure\Message\Factory\RandomMessageFactory" class="zejbm\producer\Infrastructure\Message\Factory\RandomMessageFactory">
+        </service>
+
+    </services>
+
+</container>
